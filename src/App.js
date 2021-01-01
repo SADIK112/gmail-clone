@@ -2,7 +2,8 @@ import "./App.css";
 import Header from "./header";
 import Sidebar from "./sidebar";
 import Email from "./email";
-import EmailList from "./emailList"
+import EmailList from "./emailList";
+import SendMail from "./sendMail"
 import {
   BrowserRouter as Router,
   Switch,
@@ -25,6 +26,7 @@ function App() {
           </Route>
         </Switch>
         </div>
+        <SendMail />
       </div>
     </Router>
   );

@@ -31,7 +31,7 @@
     background-color: #3079ed !important;
     text-transform: capitalize !important;
     margin: 15px !important;
-    color: white;
+    color: white !important;
 }
 
 .sendMail__close {
@@ -54,4 +54,11 @@
 
 .sendMail__message {
     flex: 1;
+}
+
+.sendMail__error {
+    background-color: white;
+    color: red;
+    text-align: right;
+    padding: 2px;
 }

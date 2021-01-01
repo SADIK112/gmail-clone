@@ -12,6 +12,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import InboxIcon from '@material-ui/icons/Inbox';
 import PeopleIcon from '@material-ui/icons/People';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import EmailRow from './emailRow';
 
 function EmailList() {
     return (
@@ -45,12 +46,20 @@ function EmailList() {
                     </IconButton>
                 </div>
             </div>
-            
+
             <div className="emailList__sections">
                     <Section Icon={InboxIcon} title="primary" color="red" selected />
                     <Section Icon={PeopleIcon} title="Socials" color="#1A73E8"  />
                     <Section Icon={LocalOfferIcon} title="Promotions" color="green"  />
-                </div>
+            </div>
+
+            <div className="emailList__lists">
+                <EmailRow id={1} 
+                    title="From CEO" 
+                    subject="leave Approve - "
+                    description="you are given permission to leave"
+                    time="10PM" />
+            </div>
         </div>
     )
 }

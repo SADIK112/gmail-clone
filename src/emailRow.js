@@ -1,12 +1,16 @@
 import React from 'react'
 import './emailRow.css'
-import { Checkbox, IconButton } from '@material-ui/core'
+import { Checkbox, IconButton } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
 import LabelImportantOutlinedIcon from '@material-ui/icons/LabelImportantOutlined';
 
 function EmailRow({ id, title, subject, description, time }) {
+
+    const history = useHistory()
+
     return (
-        <div className="emailRow">
+        <div onClick={() => history.push('/mail')} className="emailRow">
             <div className="emailRow__options">
                 <Checkbox />
                 <IconButton>

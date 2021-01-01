@@ -14,10 +14,14 @@ import MoreVertIcon from '@material-ui/icons/UnfoldMore';
 import UnfoldMoreIcon from '@material-ui/icons/MoreVert';
 import PrintIcon from '@material-ui/icons/Print';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { selectOpenMail } from './features/mailSlice';
+import { useSelector } from 'react-redux';
 
 function Email() {
 
     const history = useHistory();
+    const selectedMail = useSelector(selectOpenMail);
+    console.log('e kita', selectedMail)
 
     return (
         <div className="mails">
@@ -67,13 +71,13 @@ function Email() {
 
             <div className="mail__body">
                 <div className="mail__bodyHeader">
-                    <h2>Subject</h2>
+                    <h2>{selectedMail?.subject}</h2>
                     <LabelImportantIcon className="mail__important" />
-                    <p>Title</p>
-                    <p className="mail__time">10PM</p>
+                    <p>{selectedMail?.title}</p>
+                    <p className="mail__time">{selectedMail?.time}</p>
                 </div>
                 <div className="mail__message">
-                    <p>This is a message</p>
+                    <p>{selectedMail?.description}</p>
                 </div>
             </div>
 

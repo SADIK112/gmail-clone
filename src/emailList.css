@@ -3,6 +3,10 @@
     overflow: scroll;
 }
 
+.emailList::-webkit-scrollbar {
+    display: none;
+}
+
 .emailList__settings {
     position: sticky;
     top: 0;

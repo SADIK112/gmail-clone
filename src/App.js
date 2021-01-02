@@ -11,14 +11,40 @@ import {
 } from 'react-router-dom';
 import { selectSendMessageIsOpen } from "./features/mailSlice";
 import { useSelector } from 'react-redux';
+import { selectUser } from "./features/userSlice";
+import Login from "./login";
+import { useDispatch } from 'react-redux';
+import { auth } from "./firebase";
+import {login} from './features/userSlice'
+import { useEffect } from 'react';
 
 function App() {
 
+  const dispatch = useDispatch();
   const sendMessageIsOpen = useSelector(selectSendMessageIsOpen);
+  const user = useSelector(selectUser)
 
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if(user) {
+        dispatch(
+          login({
+            displayName: user.displayName,
+            email: user.email,
+            photoUrl: user.photoURL
+        })
+        )
+      }
+    })
+  }, [])
+  
   return (
     <Router>
-      <div className="App">
+      {!user ? 
+      (
+        <Login />
+      ) : (
+        <div className="App">
         <Header />
         <div className="app__body">
         <Sidebar />
@@ -33,6 +59,8 @@ function App() {
         </div>
         { sendMessageIsOpen && <SendMail /> }
       </div>
+      )  
+    }
     </Router>
   );
 }
